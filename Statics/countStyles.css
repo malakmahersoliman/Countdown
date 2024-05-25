@@ -1,0 +1,87 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 2rem;
+    background-color: hsl(0, 0%, 0%);
+    display: grid;
+    gap: 1rem;
+    align-content: center;
+    justify-items: center;
+}
+
+h1 {
+    font-family: system-ui, sans-serif;
+    color: hsl(0, 0%, 100%);
+    text-align: center;
+}
+
+h1 > span:last-of-type {
+    color: crimson;
+}
+
+.countdown {
+    font-family: system-ui, sans-serif;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    width: min(60rem, 100%);
+    margin-inline: auto;
+    container: inline-size;
+}
+
+.countdown > .part {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    display: grid;
+    place-items: center;
+}
+
+.countdown > .part > .remaining {
+    grid-area: 1 / 1;
+    color: hsl(0, 0%, 100%);
+    display: grid;
+    place-items: center;
+    text-align: center;
+    font-size: 4cqi;
+}
+
+.countdown > .part > .remaining > .number {
+    color: hsl(0, 0%, 100%);
+}
+
+.countdown > .part > .remaining > .text {
+    color: hsl(0, 0%, 25%);
+    text-transform: uppercase;
+    font-size: 0.5em;
+}
+
+.countdown > .part > .dot-container {
+    grid-area: 1/1;
+    width: 4%; /* Adjusted for larger dots */
+    height: 100%; /* Adjusted for larger dots */
+    transform: rotate(calc(360deg / var(--dots) * var(--dot-idx)));
+}
+
+.countdown > .part > .dot-container > .dot {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-color: hsl(0, 0%, 10%);
+    border-radius: 50%;
+    transition: background-color 0.25s;
+}
+
+.countdown > .part > .dot-container > .dot[data-active="true"] {
+    background-color: aqua;
+}
+
+.countdown > .part > .dot-container > .dot[data-active="true"][data-lastactive="true"] {
+    background-color: crimson;
+}
+
